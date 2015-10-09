@@ -25,8 +25,12 @@ Execució
 -----------------
 El programa original el vaig fer en Java però em vaig autoreptar a fer-lo en Python per veure si n'era capaç.
 
-Per tant per executar-lo cal tenir Python 2.7 i la llibreria PyGame instal·lada en el sistema. 
+Per tant per executar-lo cal tenir Python 2.7 i la llibreria PyGame instal·lada en el sistema.
 
 Es pot executar simplement amb:
 
     $ python App.py
+
+El resultat serà una pantalla com aquesta:
+
+![En execució](README/estira4.png)
