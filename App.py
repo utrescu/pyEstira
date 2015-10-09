@@ -9,6 +9,12 @@ from pygame.locals import*
 pygame.init()
 
 def start():
+    """
+    Comença el programa.
+    :return:
+    """
+
+    # Crea la finestra
     finestra = pygame.display.set_mode((1200, 400))
 
     # Crear els jugadors i els afegeixo a la competició
@@ -20,6 +26,8 @@ def start():
     competicio.afegirjugador(0, Jugador("Pep4", pygame.image.load('jugador1.png')))
     competicio.afegirjugador(0, Jugador("Pep5", pygame.image.load('jugador1.png')))
     competicio.afegirjugador(0, Jugador("Pep6", pygame.image.load('jugador1.png')))
+    competicio.afegirjugador(0, Jugador("Pep6", pygame.image.load('jugador1.png')))
+
 
     competicio.afegirjugador(1, Jugador("Met1", pygame.image.load('jugador2.png')))
     competicio.afegirjugador(1, Jugador("Met2", pygame.image.load('jugador2.png')))
@@ -27,9 +35,12 @@ def start():
     competicio.afegirjugador(1, Jugador("Met4", pygame.image.load('jugador2.png')))
     competicio.afegirjugador(1, Jugador("Met5", pygame.image.load('jugador2.png')))
     competicio.afegirjugador(1, Jugador("Met6", pygame.image.load('jugador2.png')))
+    competicio.afegirjugador(1, Jugador("Met7", pygame.image.load('jugador2.png')))
 
+    # Posiciona els jugadors
     competicio.ready()
 
+    # Competeixen fins que un dels equips ha estat portat al centre
     while not competicio.acabat():
         finestra.fill((255, 255, 255))
 
@@ -38,7 +49,10 @@ def start():
                 pygame.quit()
                 sys.exit()
 
+        # Estirada dels dos equips
         competicio.estira()
+
+        # Pinto les imatges
         competicio.pinta()
 
         pygame.display.flip()

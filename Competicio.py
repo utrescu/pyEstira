@@ -6,21 +6,39 @@ from Corda import Corda
 
 
 class Competicio(object):
+    """
+    Objecte que simula l'estirament de corda entre dos equips.
+
+    Mira la força que fa cada un dels equips i els mou coherentment
+    segons el resultat obtingut.
+    """
 
     SEPARACIO = 200
 
-    def __init__(self, pantalla):
+    def __init__(self, pantalla, debug=False):
         self.pantalla = pantalla
         self.equips = []
         self.mocador = Corda(pygame.image.load('mocador.png'))
         self.equips.append(Equip('esquerra'))
         self.equips.append(Equip('dret'))
         self.desplasament = 0
+        self.DEBUG = debug
 
     def afegirjugador(self, on, jugador):
+        """
+        Afegeix un jugador a un dels equips
+        :param on: Quin dels equips és
+        :param jugador: Jugador a afegir
+        :return:
+        """
         self.equips[on].afegir_jugador(jugador)
 
     def ready(self):
+        """
+        Posiciona els jugadors en la pantalla. Per fer-ho es basa en
+        que cada equip indicarà quant d'espai ocupa.
+        :return:
+        """
         # Posiciona els jugadors
         self.desplasament = 0
         posicio_mocador = 0
@@ -35,7 +53,6 @@ class Competicio(object):
         for equip in self.equips:
 
             pos = equip.posiciona_jugadors(posx, inici_y)
-            print "retorna:", pos
             posx = pos + self.SEPARACIO
             if index == 0:
                 posicio_mocador = posx
@@ -46,6 +63,9 @@ class Competicio(object):
         self.mocador.posiciona_mocador(posicio_mocador, inici_y)
 
     def ampladaequips(self):
+        """
+        :return: Calcula la suma de l'espai que ocupen els dos equips
+        """
         suma = 0
         for equip in self.equips:
             suma = suma + equip.suma_amplades()
@@ -75,8 +95,9 @@ class Competicio(object):
         # Index de desplaçament acumulat
         self.desplasament = self.desplasament + moviment
 
-        print(str(pondera) + "ESQUERRA:" + str(forca_esquerra) + " vs " + "DRETA:" + str(forca_dreta) +
-              " (" + str(moviment) + ") ->" + str(self.desplasament))
+        if self.DEBUG:
+            print("ESQUERRA:" + str(forca_esquerra) + " vs " + "DRETA:" + str(forca_dreta) +
+                  " (" + str(moviment) + ") ->" + str(self.desplasament))
 
     def pinta(self):
         """
