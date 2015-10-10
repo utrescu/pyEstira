@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 __author__ = 'xavier'
 import pygame
 from Equip import Equip
