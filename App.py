@@ -58,6 +58,7 @@ def start():
         pygame.display.flip()
         pygame.time.delay(80)
 
+    print competicio.desplasament
     pygame.time.delay(3000)
 
 
