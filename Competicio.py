@@ -66,11 +66,8 @@ class Competicio(object):
     def ampladaequips(self):
         """
         :return: Calcula la suma de l'espai que ocupen els dos equips
-        """
-        suma = 0
-        for equip in self.equips:
-            suma = suma + equip.suma_amplades()
-        return suma
+        """         
+        return sum( [equip.suma_amplades() for equip in self.equips] )
 
     def estira(self):
         """
